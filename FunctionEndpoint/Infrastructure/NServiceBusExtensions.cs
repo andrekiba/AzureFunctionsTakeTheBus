@@ -16,13 +16,34 @@ namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Infrastructure
     {
         public static ServiceBusTriggeredEndpointConfiguration BuildEndpointConfiguration(IFunctionsHostBuilder builder, IConfiguration configuration)
         {
+            //The endpoint is automatically configured with the endpoint name and the transport connection string
+            //string based on the values defined in the [ServiceBusTrigger] attribute
+            //using the ServiceBusTriggeredEndpointConfiguration.FromAttributes method.
+            
+            //var endpointConfiguration = ServiceBusTriggeredEndpointConfiguration.FromAttributes();
+            
             var endpointConfiguration = new ServiceBusTriggeredEndpointConfiguration(configuration["NServiceBus:EndpointName"]);
             endpointConfiguration.LogDiagnostics();
             var e = endpointConfiguration.AdvancedConfiguration;
 
             //var transport = e.UseTransport<AzureServiceBusTransport>();
             //transport.ConnectionString(configuration["AzureWebJobsServiceBus"]);
-
+            
+            /*
+            var recoverability = e.Recoverability();
+            recoverability.Immediate(
+                immediate =>
+                {
+                    immediate.NumberOfRetries(3); //default 5
+                });
+            recoverability.Delayed(
+                delayed =>
+                {
+                    delayed.NumberOfRetries(3); //default 3
+                    delayed.TimeIncrease(TimeSpan.FromSeconds(10)); //defualt 10s
+                });
+            */
+            
             var serialization = e.UseSerialization<NewtonsoftSerializer>();
             // Newtonsoft serializer doesn't properly deserialize properties with protected setter,
             // the following serializer settings will be applied by NServiceBus during all messages's deserializations
@@ -32,18 +53,6 @@ namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Infrastructure
 
             e.AuditProcessedMessagesTo(configuration["NServiceBus:AuditQueue"]);
             e.SendFailedMessagesTo(configuration["NServiceBus:ErrorQueue"]);
-            //e.SendHeartbeatTo(serviceControlQueue: configuration["NServiceBus:ServiceControlInstance"],
-            //    frequency: TimeSpan.FromSeconds(15),
-            //    timeToLive: TimeSpan.FromSeconds(30));
-
-            //var endpointName = configuration["NServiceBus:EndpointName"];
-            //var machineName = $"{Dns.GetHostName()}.{IPGlobalProperties.GetIPGlobalProperties().DomainName}";
-            //var instanceIdentifier = $"{endpointName}@{machineName}";
-
-            //var metrics = e.EnableMetrics();
-            //metrics.SendMetricDataToServiceControl(serviceControlMetricsAddress: configuration["NServiceBus:ServiceControlMonitoringInstance"],
-            //    interval: TimeSpan.FromSeconds(10),
-            //    instanceId: instanceIdentifier);
             
             //This instruction checks every time the application starts up in order to create
             //all the necessary NServiceBus objects in the database automatically

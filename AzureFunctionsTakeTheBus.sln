@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionEndpoint", "Functio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{433AAFE5-F63A-42C5-AB23-D32859FA53B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{28F575CC-A9DF-4505-A56F-8D1B163B943E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{433AAFE5-F63A-42C5-AB23-D32859FA53B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433AAFE5-F63A-42C5-AB23-D32859FA53B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433AAFE5-F63A-42C5-AB23-D32859FA53B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F575CC-A9DF-4505-A56F-8D1B163B943E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F575CC-A9DF-4505-A56F-8D1B163B943E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F575CC-A9DF-4505-A56F-8D1B163B943E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F575CC-A9DF-4505-A56F-8D1B163B943E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
