@@ -3,12 +3,11 @@ using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint
 {
     public class EndpointFunction
     {
-        const string EndpointName = "elfo-nsbfunctions-endpoint";
-
+        const string EndpointName = "functionstakebus-endpoint";
         readonly NServiceBus.FunctionEndpoint endpoint;
         public EndpointFunction(NServiceBus.FunctionEndpoint endpoint) => this.endpoint = endpoint;
 

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using NServiceBus;
 using NServiceBus.Configuration.AdvancedExtensibility;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint.Infrastructure
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Infrastructure
 {
     public static class NServiceBusExtensions
     {
@@ -22,19 +22,6 @@ namespace Elfo.NsbFunctions.FunctionEndpoint.Infrastructure
 
             //var transport = e.UseTransport<AzureServiceBusTransport>();
             //transport.ConnectionString(configuration["AzureWebJobsServiceBus"]);
-
-            var persistence = e.UsePersistence<SqlPersistence>();
-            persistence.ConnectionBuilder(() => new SqlConnection(configuration.GetConnectionString("Db")));
-            persistence.TablePrefix(string.Empty);
-            var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
-            dialect.Schema("nservicebus");
-            var sagaSettings = persistence.SagaSettings();
-            sagaSettings.JsonSettings(EventSerialization.Settings);
-
-            //var outboxSettings = e.EnableOutbox();
-            //outboxSettings.UseTransactionScope();
-            //outboxSettings.KeepDeduplicationDataFor(TimeSpan.FromDays(6));
-            //outboxSettings.RunDeduplicationDataCleanupEvery(TimeSpan.FromMinutes(15));
 
             var serialization = e.UseSerialization<NewtonsoftSerializer>();
             // Newtonsoft serializer doesn't properly deserialize properties with protected setter,
@@ -57,15 +44,7 @@ namespace Elfo.NsbFunctions.FunctionEndpoint.Infrastructure
             //metrics.SendMetricDataToServiceControl(serviceControlMetricsAddress: configuration["NServiceBus:ServiceControlMonitoringInstance"],
             //    interval: TimeSpan.FromSeconds(10),
             //    instanceId: instanceIdentifier);
-
-            //For Development ONLY you can install NServiceBus.SagaAudit package and activate this monitoring feature
-            //https://docs.particular.net/nservicebus/sagas/saga-audit
-            //e.AuditSagaStateChanges(serviceControlQueue: configuration["NServiceBus:ServiceControlInstance"]);
-
-            //For Data Annotation validations you can activate the NServiceBus.DataAnnotations unofficial extension
-            //https://www.nuget.org/packages/NServiceBus.DataAnnotations/
-            //e.UseDataAnnotationsValidation();
-
+            
             //This instruction checks every time the application starts up in order to create
             //all the necessary NServiceBus objects in the database automatically
             var settings = e.GetSettings();

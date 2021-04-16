@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint.Infrastructure
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Infrastructure
 {
     public static class EventSerialization
     {
@@ -20,18 +20,18 @@ namespace Elfo.NsbFunctions.FunctionEndpoint.Infrastructure
             }
         }
     }
-
     public class MessageResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             var prop = base.CreateProperty(member, memberSerialization);
-            if (!prop.Writable)
-            {
-                var property = member as PropertyInfo;
-                var hasPrivateSetter = property?.GetSetMethod(true) != null;
-                prop.Writable = hasPrivateSetter;
-            }
+            
+            if (prop.Writable)
+                return prop;
+            
+            var property = member as PropertyInfo;
+            var hasPrivateSetter = property?.GetSetMethod(true) != null;
+            prop.Writable = hasPrivateSetter;
             return prop;
         }
     }

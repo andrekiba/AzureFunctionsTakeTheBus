@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Elfo.NsbFunctions.FunctionEndpoint.Messages;
+using AzureFunctionsTakeTheBus.FunctionEndpoint.Messages;
 using NServiceBus;
 using NServiceBus.Logging;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint
 {
     public class AMessageHandler : IHandleMessages<AMessage>
     {

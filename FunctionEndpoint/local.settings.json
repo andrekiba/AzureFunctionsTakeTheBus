@@ -1,14 +1,10 @@
 ﻿{
   "IsEncrypted": false,
-  "ConnectionStrings": {
-    "Db": "Data Source=srvsql2017\\italy;Initial Catalog=NsbFunctions;User ID=NsbFunctionsUser;password=$Nsbf.01"
-  },
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=nsbfunctionsdevst;AccountKey=mM8d3WG/btbb3v64u2wMpsVTFDhAn8EjJUv/AvHy41oElTeZxj1IxhALVIKsBm0D0Tss/89tpWvn0mRI93XnFQ==;EndpointSuffix=core.windows.net",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=functionstakebusdevst;AccountKey=Bg3On/l8JF++Th5fu8G3Imw9saCeCuIEO+0HUMsJM1LJlaFCxerbHjw8pG1psbvaFxReZA+pBe6GP6KKfWGyTg==;EndpointSuffix=core.windows.net",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "AzureWebJobsServiceBus": "Endpoint=sb://nsbfunctionsdevsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BuMe9FeRmtqgXDz8zdMbgq1WufbglmpWyAgPCjQrJUI=",
-    "AppName": "NsbFunctions Endpoint",
-    "NServiceBus:EndpointName": "elfo.nsbfunctions.endpoint",
+    "AzureWebJobsServiceBus": "Endpoint=sb://functionstakebusdevns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=1cDjc8jdsvtuqmOnal9j/GPG/uVB5KnhEMD1K9cwcXA=",
+    "NServiceBus:EndpointName": "functionstakebus.endpoint",
     "NServiceBus:AuditQueue": "audit",
     "NServiceBus:ErrorQueue": "error",
     "NServiceBus:ServiceControlInstance": "Particular.ServiceControl",

@@ -1,6 +1,6 @@
 using NServiceBus;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint.Messages
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Messages
 {
     public class AMessage : IMessage
     {

@@ -1,6 +1,6 @@
 using System.IO;
 using System.Threading.Tasks;
-using Elfo.NsbFunctions.FunctionEndpoint.Messages;
+using AzureFunctionsTakeTheBus.FunctionEndpoint.Messages;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NServiceBus;
 
-namespace Elfo.NsbFunctions.FunctionEndpoint
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint
 {
     public class SenderFunction
     {
