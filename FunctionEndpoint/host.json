@@ -1,0 +1,50 @@
+{
+  "version": "2.0",
+  "Serilog:": {
+    "Using": [ "Serilog.Sinks.MSSqlServer" ],
+    "MinimumLevel": {
+      "Default": "Warning",
+      "Override": {
+        "Microsoft": "Fatal",
+        "System": "Fatal"
+      }
+    },
+    "Enrich": [ "FromLogContext" ],
+    "WriteTo": [
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "connectionString": "Db",
+          "tableName": "logs_tb",
+          "schemaName": "log",
+          "autoCreateSqlTable": true,
+          "columnOptionsSection": {
+            "addStandardColumns": [ "LogEvent" ],
+            "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+            "additionalColumns": [
+              {
+                "ColumnName": "Application",
+                "DataType": "varchar",
+                "DataLength": 50
+              },
+              {
+                "ColumnName": "SourceContext",
+                "DataType": "nvarchar",
+                "DataLength": -1
+              },
+              {
+                "ColumnName": "UserName",
+                "DataType": "nvarchar",
+                "DataLength": 50
+              },
+              {
+                "ColumnName": "OperationId",
+                "DataType": "uniqueidentifier"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

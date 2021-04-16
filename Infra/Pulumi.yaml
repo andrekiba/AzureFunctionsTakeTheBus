@@ -1,0 +1,3 @@
+name: AzureFunctionsTakeTheBus
+runtime: dotnet
+description: AzureFunctionsTakeTheBus Azure Infra
