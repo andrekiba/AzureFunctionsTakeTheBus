@@ -25,9 +25,6 @@ namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Infrastructure
             var endpointConfiguration = new ServiceBusTriggeredEndpointConfiguration(configuration["NServiceBus:EndpointName"]);
             endpointConfiguration.LogDiagnostics();
             var e = endpointConfiguration.AdvancedConfiguration;
-
-            //var transport = e.UseTransport<AzureServiceBusTransport>();
-            //transport.ConnectionString(configuration["AzureWebJobsServiceBus"]);
             
             /*
             var recoverability = e.Recoverability();

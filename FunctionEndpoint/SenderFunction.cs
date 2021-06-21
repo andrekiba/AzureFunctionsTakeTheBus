@@ -28,7 +28,7 @@ namespace AzureFunctionsTakeTheBus.FunctionEndpoint
                 configuration.GetValue<string>("NServiceBus:EndpointName"));
         }
         
-        [FunctionName("Sender")]
+        [FunctionName("functionstakebus-sender")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "buy")]
             HttpRequest req,

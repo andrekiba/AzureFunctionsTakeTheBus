@@ -5,7 +5,7 @@ using Bogus;
 using NServiceBus;
 using NServiceBus.Logging;
 
-namespace AzureFunctionsTakeTheBus.FunctionEndpoint
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Handlers
 {
     public class AssembleBikeMessageHandler : IHandleMessages<AssembleBikeMessage>
     {

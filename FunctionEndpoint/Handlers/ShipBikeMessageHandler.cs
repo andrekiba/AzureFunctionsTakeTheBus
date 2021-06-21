@@ -4,12 +4,12 @@ using AzureFunctionsTakeTheBus.Shared.Messages;
 using NServiceBus;
 using NServiceBus.Logging;
 
-namespace AzureFunctionsTakeTheBus.FunctionEndpoint
+namespace AzureFunctionsTakeTheBus.FunctionEndpoint.Handlers
 {
     public class ShipBikeMessageHandler : IHandleMessages<ShipBikeMessage>
     {
         static readonly ILog log = LogManager.GetLogger<ShipBikeMessageHandler>();
-        static readonly Random random = new Random();
+        static readonly Random random = new();
         
         public ShipBikeMessageHandler()
         {
